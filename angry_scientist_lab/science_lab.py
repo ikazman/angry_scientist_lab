@@ -50,3 +50,24 @@ class ScienceLab:
         selected_females = females[to_retain_by_sex:]
         selected_males = males[to_retain_by_sex:]
         return selected_males, selected_females
+
+    def breed(self, males, females):
+        """Размножаем крыс и получаем новое поколение."""
+        children = []
+        random.shuffle(males)
+        random.shuffle(females)
+        for male, female in zip(males, females):
+            for _ in range(self.litter_size):
+                child = random.randint(female, male)
+                children.append(child)
+        return children
+
+    def mutate(self, children):
+        """Изменяем вес родившихся крыс за счет случайных мутаций."""
+        for index, rat in enumerate(children):
+            if self.mutate_odds >= random.random():
+                children[index] = round(
+                    rat * random.uniform(self.mutate_min, self.mutate_max)
+                    )
+        return children
+  
