@@ -34,3 +34,19 @@ class ScienceLab:
         https://docs.python.org/3/library/random.html#random.triangular"""
         return [int(random.triangular(min_weight, max_weight, mode_weight))
                 for _ in range(self.rats_in_lab)]
+
+    def fitness(self, population):
+        """Оцениваем текущее соответствие показателей популяции цели."""
+        average = statistics.mean(population)
+        return average / self.goal
+
+    def selection(self, population, to_retain):
+        """Отбираем из популяции необходимое число особей."""
+        sorted_population = sorted(population, reverse=True)
+        to_retain_by_sex = to_retain // 2
+        members_by_sex = len(sorted_population // 2)
+        males = sorted_population[members_by_sex:]
+        females = sorted_population[:members_by_sex]
+        selected_females = females[to_retain_by_sex:]
+        selected_males = males[to_retain_by_sex:]
+        return selected_males, selected_females
