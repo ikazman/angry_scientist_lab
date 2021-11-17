@@ -68,6 +68,5 @@ class ScienceLab:
             if self.mutate_odds >= random.random():
                 children[index] = round(
                     rat * random.uniform(self.mutate_min, self.mutate_max)
-                    )
+                )
         return children
-  
