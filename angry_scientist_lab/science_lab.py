@@ -2,7 +2,7 @@ import random
 import statistics
 import time
 
-random.seed(42) # фикисируем случайные числа
+random.seed(42)  # фикисируем случайные числа
 
 
 class ScienceLab:
@@ -13,7 +13,7 @@ class ScienceLab:
         """Исходные параметры для генетического алгоритма для разведения
         суперкрыс из Rattus norvegicus."""
         self.goal = goal  # определяем желаемый итоговый вес крысы (в граммах)
-        self.rats_in_lab = rats_in_lab  # число крыс в лаборатории
+        self.rats_in_lab = rats_in_lab  # максимум число крыс в лаборатории
         self.init_min_weight = 200
         self.init_max_weight = 600
         self.init_mode_weigth = 300
@@ -23,3 +23,14 @@ class ScienceLab:
         self.litter_size = 8
         self.litters_per_year = 10
         self.generation_limit = generation_limit  # число поколений
+
+    def rats_number_even(self):
+        """Проверяем, что в лаборатиории четное число крыс для разведения."""
+        if self.rats_in_lab % 2 != 0:
+            self.rats_in_lab += 1
+
+    def populate(self, min_weight, max_weight, mode_weight):
+        """Инициализируем популяцию крыс с помощью треугольного распределения:
+        https://docs.python.org/3/library/random.html#random.triangular"""
+        return [int(random.triangular(min_weight, max_weight, mode_weight))
+                for _ in range(self.rats_in_lab)]
