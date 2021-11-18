@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://imgur.com/UwJGCOP" alt="Science"></a>
+ <img width=200px height=200px src="https://i.imgur.com/UwJGCOP.jpeg" alt="Science"></a>
 </p>
 
 <h3 align="center">Лаборатория злого (точно не сумасшедшего) ученого для разведения 50 кг крыс с помощью генетического алгоритма.</h3>
