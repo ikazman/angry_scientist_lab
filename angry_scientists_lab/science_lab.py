@@ -1,6 +1,5 @@
 import random
 import statistics
-import time
 
 random.seed(42)  # фикисируем случайные числа
 
@@ -29,10 +28,12 @@ class ScienceLab:
         if self.rats_in_lab % 2 != 0:
             self.rats_in_lab += 1
 
-    def populate(self, min_weight, max_weight, mode_weight):
+    def populate(self):
         """Инициализируем популяцию крыс с помощью треугольного распределения:
         https://docs.python.org/3/library/random.html#random.triangular"""
-        return [int(random.triangular(min_weight, max_weight, mode_weight))
+        return [int(random.triangular(self.init_min_weight,
+                                      self.init_max_weight,
+                                      self.init_mode_weigth))
                 for _ in range(self.rats_in_lab)]
 
     def fitness(self, population):
@@ -40,10 +41,10 @@ class ScienceLab:
         average = statistics.mean(population)
         return average / self.goal
 
-    def selection(self, population, to_retain):
+    def selection(self, population):
         """Отбираем из популяции необходимое число особей."""
         sorted_population = sorted(population, reverse=True)
-        to_retain_by_sex = to_retain // 2
+        to_retain_by_sex = self.rats_in_lab // 2
         members_by_sex = len(sorted_population // 2)
         males = sorted_population[members_by_sex:]
         females = sorted_population[:members_by_sex]
@@ -70,3 +71,7 @@ class ScienceLab:
                     rat * random.uniform(self.mutate_min, self.mutate_max)
                 )
         return children
+
+    def mean_statistic(self, population):
+        """Вычисляем средний вес популяции."""
+        return int(statistics.mean(population))
