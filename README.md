@@ -1,8 +1,3 @@
-<p align="center">
-  <a href="" rel="noopener">
- <img width=200px height=200px src="https://images.app.goo.gl/Yfuben2PyYBzqQU77" alt="Project logo"></a>
-</p>
-
 <h3 align="center">Лаборатория злого (точно не сумасшедшего) ученого для разведения 50 кг крыс с помощью генетического алгоритма.</h3>
 
 <div align="center">
