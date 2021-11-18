@@ -6,5 +6,5 @@ if __name__ == '__main__':
     angry_totally_not_mad = angry_scientist_and_minions.AngryScentist()
     angry_totally_not_mad.report()
     end = time.time()
-    duration = start - end
-    print('\nАлгоритм выполнен за {duration} сек.')
+    duration = end - start
+    print(f'\nАлгоритм выполнен за {duration} сек.')

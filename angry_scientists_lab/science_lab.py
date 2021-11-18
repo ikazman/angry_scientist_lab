@@ -43,13 +43,13 @@ class ScienceLab:
 
     def selection(self, population):
         """Отбираем из популяции необходимое число особей."""
-        sorted_population = sorted(population, reverse=True)
+        sorted_population = sorted(population)
         to_retain_by_sex = self.rats_in_lab // 2
-        members_by_sex = len(sorted_population // 2)
+        members_by_sex = len(sorted_population) // 2
         males = sorted_population[members_by_sex:]
         females = sorted_population[:members_by_sex]
-        selected_females = females[to_retain_by_sex:]
-        selected_males = males[to_retain_by_sex:]
+        selected_females = females[-to_retain_by_sex:]
+        selected_males = males[-to_retain_by_sex:]
         return selected_males, selected_females
 
     def breed(self, males, females):
@@ -74,4 +74,4 @@ class ScienceLab:
 
     def mean_statistic(self, population):
         """Вычисляем средний вес популяции."""
-        return int(statistics.mean(population))
+        return int(statistics.mean(population)) / 1000
