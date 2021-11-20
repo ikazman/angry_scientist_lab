@@ -1,4 +1,5 @@
 import time
+
 from angry_scientist import angry_scientist_and_minions
 
 if __name__ == '__main__':
