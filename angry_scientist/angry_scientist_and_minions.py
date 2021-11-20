@@ -23,7 +23,7 @@ class AngryScentist:
             children = lab.breed(selected_males, selected_females)
             children = lab.mutate(children)
             parents = selected_males + selected_females + children
-            pop_fitness = lab.fitness(parents)
+            pop_fitness = round(lab.fitness(parents), 2)
             print(f'Показатели поколения {self.generation}: {pop_fitness}')
             self.average_weights.append(lab.mean_statistic(parents))
             self.generation += 1
